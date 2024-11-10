@@ -1,0 +1,80 @@
+﻿@model Book
+<style>
+    body {
+        background: linear-gradient(to right, #8e9eab, #eef2f3);
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+
+    .card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        margin: 20px auto;
+        overflow: hidden;
+    }
+
+    .card img {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .card-body, .list-group-item {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .list-group-item {
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: #333;
+        text-align: center;
+        padding: 10px 0;
+    }
+</style>
+
+<div class="card">
+    <img style="height: 400px; width: 400px" src="~/@Settings.BookImagePath@(string.IsNullOrEmpty(Model.Image) ? "default.png" : Model.Image)" class="card-img-top" alt="@Model.Title">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">@Model.Author</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Автор - @Model.Author</li>
+        <li class="list-group-item">Видавництво - @Model.Publisher</li>
+        <li class="list-group-item">Автор - @Model.Year</li>
+        <li class="list-group-item">Жанр - @Model.Genre</li>
+        <li class="list-group-item">Ст. - @Model.PageCount</li>
+        <li class="list-group-item">Опис - @Model.Description</li>
+        <li class="list-group-item">Мова - @Model.Language</li>
+    </ul>
+</div>
+
+@* @model Book
+
+<h1>@Model.Title</h1>
+<h1>@Model.Author</h1>
+<div>
+        <img style="height: 400px; width: 400px" src="~/@Settings.BookImagePath@(string.IsNullOrEmpty(Model.Image) ? "default.png" : Model.Image)" class="card-img-top" alt="@Model.Title">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Title</h5>
+            <p class="card-text">@Model.Author</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Жанр - @Model.Genre</li>
+            <li class="list-group-item">Ст. - @Model.PageCount</li>
+            <li class="list-group-item">Опис - @Model.Description</li>
+            <li class="list-group-item">Мова - @Model.Language</li>
+        </ul>
+        <div class="card-body"> 
+        </div>
+</<div> *@
