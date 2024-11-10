@@ -12,6 +12,7 @@ namespace Library_NPR321.Models
         [MaxLength(100)]
         public string? LastName { get; set; }
         [MaxLength]
-        public byte[] Image { get; set; }
+        public string? Image { get; set; }
+        //public IFormFile Image { get; set; }
     }
 }

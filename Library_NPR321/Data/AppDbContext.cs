@@ -1,10 +1,11 @@
 ﻿using Library_NPR321.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library_NPR321.Data
 {
-    public class AppDbContext : IdentityDbContext<User>
+    public class AppDbContext : IdentityDbContext<User, IdentityRole, string>
     {
         public AppDbContext(DbContextOptions options)
             : base(options) { }

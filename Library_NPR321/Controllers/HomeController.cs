@@ -95,5 +95,25 @@ namespace Library_NPR321.Controllers
 
             return items;
         }
+        //[HttpPost]
+        //public async Task<IActionResult>
+        //UploadAvatar(IFormFile avatar)
+        //{
+        //    if (avatar != null && avatar.Length > 0)
+        //    {
+        //        var fileName = Path.GetFileName(avatar.FileName);
+        //        var filePath = Path.Combine("wwwroot", "uploads", fileName);
+
+        //        using (var stream = new FileStream(filePath, FileMode.Create))
+        //        {
+        //            await avatar.CopyToAsync(stream);
+        //        }
+
+        //        var user = await _userManager.GetUserAsync(User);
+        //        user.Image = "/uploads/" + fileName;
+        //        await _userManager.UpdateAsync(user);
+        //    }
+        //    return RedirectToAction("Profile");
+        //}
     }
 }

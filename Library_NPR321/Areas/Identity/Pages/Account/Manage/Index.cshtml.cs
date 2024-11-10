@@ -68,14 +68,13 @@ namespace Library_NPR321.Areas.Identity.Pages.Account.Manage
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-            var image = user.Image; 
+            var image = user.Image;
 
             Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber,
-                Image = image
+                PhoneNumber = phoneNumber
             };
         }
 
@@ -89,7 +88,26 @@ namespace Library_NPR321.Areas.Identity.Pages.Account.Manage
             await LoadAsync(user);
             return Page();
         }
+        [HttpPost]
+        public async Task<IActionResult>
+        UploadAvatar(IFormFile avatar)
+        {
+            if (avatar != null && avatar.Length > 0)
+            {
+                var fileName = Path.GetFileName(avatar.FileName);
+                var filePath = Path.Combine("wwwroot", "uploads", fileName);
 
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await avatar.CopyToAsync(stream);
+                }
+
+                var user = await _userManager.GetUserAsync(User);
+                user.Image = "/uploads/" + fileName;
+                await _userManager.UpdateAsync(user);
+            }
+            return RedirectToAction("Profile");
+        }
         public async Task<IActionResult> OnPostAsync()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -114,15 +132,15 @@ namespace Library_NPR321.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
-            if (Request.Form.Files.Count > 0)
-            {
-                IFormFile file = Request.Form.Files.FirstOrDefault();
-                using (var dataStream = new MemoryStream())
-                {
-                    await file.CopyToAsync(dataStream);
-                    user.Image = dataStream.ToArray();
-                }
-            }
+            //if (Request.Form.Files.Count > 0)
+            //{
+            //    IFormFile file = Request.Form.Files.FirstOrDefault();
+            //    using (var dataStream = new MemoryStream())
+            //    {
+            //        await file.CopyToAsync(dataStream);
+            //        user.Image = dataStream.ToArray();
+            //    }
+            //}
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();

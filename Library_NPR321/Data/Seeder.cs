@@ -33,7 +33,7 @@ namespace Library_NPR321.Data
                     {
                         Id = Guid.NewGuid().ToString(),
                         Email = "admin@gmail.com",
-                        UserName = "admin",
+                        UserName = "admin@gmail.com",
                         EmailConfirmed = true,
                         LockoutEnabled = false
                     };
@@ -44,7 +44,7 @@ namespace Library_NPR321.Data
                     {
                         Id = Guid.NewGuid().ToString(),
                         Email = "user@gmail.com",
-                        UserName = "user",
+                        UserName = "user@gmail.com",
                         EmailConfirmed = true,
                         LockoutEnabled = false
                     };

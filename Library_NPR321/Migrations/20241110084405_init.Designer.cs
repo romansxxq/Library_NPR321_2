@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library_NPR321.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241026200946_add book table")]
-    partial class addbooktable
+    [Migration("20241110084405_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
